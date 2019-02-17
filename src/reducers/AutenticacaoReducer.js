@@ -3,6 +3,9 @@ const INITIAL_STATE = {
     email: "",
     senha: "",
     error: "",
+    erroAutenticacao: "",
+    erroCadastro: "",
+
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -29,13 +32,28 @@ export default (state = INITIAL_STATE, action) => {
         case 'cadastro_usuario_erro':
             return {
                 ...state,
-                error: action.payload
+                erroCadastro: action.payload
             }
             break;
-            case 'cadastro_usuario_sucesso':
+        case 'cadastro_usuario_sucesso':
             return {
                 ...state,
-                nome: '', senha: ''
+                nome: '',
+                senha: ''
+            }
+            break;
+
+        case 'autentica_usuario_erro':
+            return {
+                ...state,
+                erroAutenticacao: action.payload
+            }
+            break;
+        case 'autentica_usuario_sucesso':
+            return {
+                ...state,
+                email: '',
+                senha: ''
             }
             break;
 

@@ -11,8 +11,9 @@ const FormStyle = StyleSheet.create({
         borderRadius:30
     },
     errorMessage: {
-        fontSize:18,
-        color:'#ff0000'
+        fontSize:15,
+        color:'#ff0000',
+        alignSelf: 'center',
     }
 });
 
