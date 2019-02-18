@@ -11,7 +11,8 @@ import {
     CADASTRO_USUARIO_SUCESSO,
     CADASTRO_USUARIO_ERRO,
     AUTENTICA_USUARIO_SUCESSO,
-    AUTENTICA_USUARIO_ERRO
+    AUTENTICA_USUARIO_ERRO,
+    ACTIVITY
 } from './types';
 
 export const modificaEmail = (texto) => {
@@ -36,6 +37,8 @@ export const modificaNome = (texto) => {
 
 export const cadastraUsuario = (cadastro) => {
     return dispatch => {
+        dispatch({type: ACTIVITY})
+
         firebase.auth().createUserWithEmailAndPassword(cadastro.email, cadastro.senha)
             .then(user => {
                 let emailBase64 = b64.encode(cadastro.email)
@@ -70,6 +73,9 @@ const cadastraUsuarioErro = (erro, dispatch) => {
 
 export const autenticaUsuario = (usuario) => {
     return dispatch => {
+        
+        dispatch({type: ACTIVITY})
+
         firebase.auth().signInWithEmailAndPassword(usuario.email, usuario.senha)
             .then(user => {
                 autenticaUsuarioSucesso(dispatch, user)

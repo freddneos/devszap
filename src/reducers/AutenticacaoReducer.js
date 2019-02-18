@@ -1,3 +1,15 @@
+import {
+    MODIFICA_EMAIL,
+    MODIFICA_SENHA,
+    MODIFICA_NOME,
+    CADASTRO_USUARIO_SUCESSO,
+    CADASTRO_USUARIO_ERRO,
+    AUTENTICA_USUARIO_SUCESSO,
+    AUTENTICA_USUARIO_ERRO,
+    ACTIVITY
+} from '../actions/types'
+
+
 const INITIAL_STATE = {
     nome: "",
     email: "",
@@ -5,55 +17,69 @@ const INITIAL_STATE = {
     error: "",
     erroAutenticacao: "",
     erroCadastro: "",
+    loaderLogin: false,
+    loaderCadastro:false
 
 }
 
 export default (state = INITIAL_STATE, action) => {
     console.log('Olhando a action pelo reducer...', action)
     switch (action.type) {
-        case 'modifica_email':
+        case MODIFICA_EMAIL:
             return {
                 ...state,
                 email: action.payload
             }
             break;
-        case 'modifica_senha':
+        case MODIFICA_SENHA:
             return {
                 ...state,
                 senha: action.payload
             }
             break;
-        case 'modifica_nome':
+        case MODIFICA_NOME:
             return {
                 ...state,
                 nome: action.payload
             }
             break;
-        case 'cadastro_usuario_erro':
+        case CADASTRO_USUARIO_ERRO:
             return {
                 ...state,
-                erroCadastro: action.payload
+                erroCadastro: action.payload,
+                loaderCadastro:false
             }
             break;
-        case 'cadastro_usuario_sucesso':
+        case CADASTRO_USUARIO_SUCESSO:
             return {
                 ...state,
                 nome: '',
-                senha: ''
+                senha: '',
+                loaderCadastro:false
             }
             break;
 
-        case 'autentica_usuario_erro':
+        case AUTENTICA_USUARIO_ERRO:
             return {
                 ...state,
-                erroAutenticacao: action.payload
+                erroAutenticacao: action.payload,
+                loaderLogin: false
+
             }
             break;
-        case 'autentica_usuario_sucesso':
+        case AUTENTICA_USUARIO_SUCESSO:
             return {
                 ...state,
                 email: '',
-                senha: ''
+                senha: '',
+                loaderLogin: false
+            }
+            break;
+        case ACTIVITY:
+            return {
+                ...state,
+                loaderLogin: true,
+                loaderCadastro:true
             }
             break;
 

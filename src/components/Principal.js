@@ -1,31 +1,44 @@
-import React, {Component} from 'react';
-import{Actions} from 'react-native-router-flux'
-import {View , TextInput , Button , StyleSheet, Text,SafeAreaView,TouchableOpacity} from 'react-native'
-import {connect} from 'react-redux'
+import * as React from 'react';
+import { View, StyleSheet, Dimensions ,SafeAreaView} from 'react-native';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
+import Contatos from './Contatos'
+import Conversa from './Conversas'
+import TabMenu  from './TabMenu'
 
-import { modificaEmail , modificaSenha} from '../actions/AutenticacaoActions'
-import FormStyle from  '../styles/FormStyle'
+const contatos = Contatos
+const conversas = Conversa
 
 
-class Principal extends Component {
-    constructor(props) {
-        super(props)
-    }
-    render() {
-    console.log('Splash props ->',this.props)
+export default class TabViewExample extends React.Component {
+  state = {
+    index: 0,
+    routes: [
+      { key: 'first', title: 'Conversas' },
+      { key: 'second', title: 'Contatos' },
+    ],
+  };
+  renderHeader = props => <TabMenu {...props}/>
+
+  render() {
     return (
-      <SafeAreaView style={{flex:1 ,justifyContent:"center",alignItems: 'center'}}>
-          <TouchableOpacity onPress={() => {Actions.replace("formLogin")}}>
-            <Text style={{fontSize:40}}>Tela Principal</Text>
-            
-          </TouchableOpacity>
+        <SafeAreaView style={{flex:1}}>
+            <TabView
+                renderTabBar={this.renderHeader}
+                navigationState={this.state}
+                renderScene={SceneMap({
+                first: contatos,
+                second: conversas,
+                })}
+                onIndexChange={index => this.setState({ index })}
+                initialLayout={{ width: Dimensions.get('window').width }}
+            />
       </SafeAreaView>
     );
   }
 }
 
-const mapStateToProps = state => ({
- 
+const styles = StyleSheet.create({
+  scene: {
+    flex: 1,
+  },
 });
-
-export default connect(mapStateToProps,{ modificaEmail,modificaSenha } )(Principal);

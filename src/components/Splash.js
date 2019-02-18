@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 
 import { modificaEmail , modificaSenha} from '../actions/AutenticacaoActions'
 import FormStyle from  '../styles/FormStyle'
+import Theme from '../styles/Theme'
 
 const initialize = () => {
   setTimeout(() => {
@@ -25,10 +26,10 @@ class Splash extends Component {
     render() {
     console.log('Splash props ->',this.props)
     return (
-      <SafeAreaView style={{flex:1 ,justifyContent:"center",alignItems: 'center'}}>
+      <SafeAreaView style={{flex:1 ,justifyContent:"center",alignItems: 'center',...Theme.view}}>
           <TouchableOpacity onPress={() => {Actions.replace("formLogin")}}>
-            <Text style={{fontSize:40}}>DevsZap</Text>
-            <Text style={{fontSize:14}}>Comunication is a must!</Text> 
+            <Text style={{fontSize:40, ...Theme.text}}>DevsZap</Text>
+            <Text style={{fontSize:14, ...Theme.text}}>Comunication is a must!</Text> 
           </TouchableOpacity>
       </SafeAreaView>
     );
