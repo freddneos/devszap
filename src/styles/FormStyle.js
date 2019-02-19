@@ -16,6 +16,7 @@ const FormStyle = StyleSheet.create({
         fontSize:15,
         color:'#ff0000',
         alignSelf: 'center',
+        padding:10
     },
     text: {
         ...Theme.text,

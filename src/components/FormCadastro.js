@@ -4,6 +4,8 @@ import { modificaSenha , modificaEmail , modificaNome,cadastraUsuario} from '../
 import {connect} from 'react-redux'
 import FormStyle from  '../styles/FormStyle'
 
+import Theme from  '../styles/Theme'
+
 
 
 class FormCadastro extends Component {
@@ -30,9 +32,9 @@ class FormCadastro extends Component {
   }
   render() {
     return (
-      <SafeAreaView style={{flex:1 ,justifyContent:"center"}}>
+      <SafeAreaView style={{flex:1 ,justifyContent:"center",...Theme.view}}>
           <View style={{flex:1,justifyContent:"center",alignItems:"center"}}>
-              <Text style={{fontSize:30 , fontWeight:"bold", fontFamily: 'Arial',}}>DevsZap</Text>
+              <Text style={{fontSize:30 , fontWeight:"bold", fontFamily: 'Arial',...Theme.text}}>DevsZap</Text>
           </View>
           <View style={{flex:2,padding:30}}>
               <TextInput  style={FormStyle.textInput} value={this.props.nome} onChangeText={texto => {this.props.modificaNome(texto)}} placeholder='Nome'/>

@@ -47,7 +47,8 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 erroCadastro: action.payload,
-                loaderCadastro:false
+                loaderCadastro:false,
+                loaderLogin: false,
             }
             break;
         case CADASTRO_USUARIO_SUCESSO:
@@ -55,7 +56,8 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 nome: '',
                 senha: '',
-                loaderCadastro:false
+                loaderCadastro:false,
+                loaderLogin: false,
             }
             break;
 
@@ -63,7 +65,8 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 erroAutenticacao: action.payload,
-                loaderLogin: false
+                loaderLogin: false,
+                loaderCadastro:false
 
             }
             break;
@@ -72,7 +75,8 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 email: '',
                 senha: '',
-                loaderLogin: false
+                loaderLogin: false,
+                loaderCadastro:false
             }
             break;
         case ACTIVITY:

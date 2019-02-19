@@ -38,7 +38,7 @@ class FormLogin extends Component {
             <View style={{flex:2,padding:30}}>
                 <TextInput  style={ FormStyle.textInput } value={this.props.email} onChangeText={texto => {this.props.modificaEmail(texto)}} placeholder='Email'/>
                 <TextInput secureTextEntry style={ FormStyle.textInput } value={this.props.senha} onChangeText={texto => {this.props.modificaSenha(texto)}} placeholder='Senha'/>
-                <TouchableOpacity onPress={()=>Actions.push("formCadastro")} >
+                <TouchableOpacity onPress={()=>Actions.formCadastro()} >
                     <Text style={FormStyle.text }>Não tem cadastro? Cadastre-se</Text>
                     <Text style={FormStyle.errorMessage}>{this.props.erroAutenticacao}</Text>
                 </TouchableOpacity>

@@ -15,21 +15,16 @@ import ReduxThunk from "redux-thunk"
 
 import Routes from "./Routes"
 import reducers from  "./reducers"
+import { FIREBASE_CONFIG } from  "../config"
 
 
 export default class App extends Component {
 
   componentWillMount(){
      // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyAIE70Pv010CA88TYJRC-8QNiyVMIhbK84",
-      authDomain: "devszap.firebaseapp.com",
-      databaseURL: "https://devszap.firebaseio.com",
-      projectId: "devszap",
-      storageBucket: "devszap.appspot.com",
-      messagingSenderId: "514230745787"
-    };
+    var config = FIREBASE_CONFIG
     firebase.initializeApp(config);
+    console.disableYellowBox = true
   }
   render() {
     return (
